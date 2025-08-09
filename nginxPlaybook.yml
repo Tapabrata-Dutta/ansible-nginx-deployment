@@ -1,0 +1,22 @@
+---
+- name: Install and start nginx
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: present
+
+    - name: Start Nginx
+      service:
+        name: nginx
+        state: started
+
+    - name: Creted folder 
+      file:
+        path: /home/ubuntu/NginxInstall
+        state: directory
+        owner: ubuntu
+        mode: '0755'   
